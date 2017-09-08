@@ -56,3 +56,11 @@ app.put('/tasks', (req, res) => {
         tasks[index].name = req.body.name;
         res.json(tasks[index]);
 });
+
+app.delete('/tasks/:id', (req, res) => {
+	console.log('delete...');
+        let id = req.params.id;
+        let index = tasks.findIndex((task => task.id === id));
+        tasks.pop(index);
+        res.json({});
+});
