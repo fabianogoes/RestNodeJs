@@ -22,10 +22,10 @@ app.listen(3000, () => {
 // arqui estamos criadno nossa lista temporária que ira simular nosso Banco de Dados
 //************************************************************************************
 tasks = Array.apply(null, Array(5)).map( () => {
-        return {
-                "id": uuid(),
-                "name": Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-        };
+    return {
+        "id": uuid(),
+        "name": Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+    };
 });
 
 ///////////////////////////////////////////////
@@ -40,4 +40,15 @@ app.get('/tasks/:id', (req, res) => {
     let task = tasks.filter(task => task.id === id)[0];
     res.json(task);
 });  
+
+app.post('/tasks', (req, res) => {
+    let task = {
+        "id": uuid(),
+        "name": req.body.name
+    };
+    tasks.push(task);
+    res.json(task);
+});
+
+
 
