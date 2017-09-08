@@ -53,7 +53,6 @@ app.post('/tasks', (req, res) => {
 app.put('/tasks', (req, res) => {
         let id = req.body.id;
         let index = tasks.findIndex((task => task.id === id));
-        if(index < 0) return null;
         tasks[index].name = req.body.name;
         res.json(tasks[index]);
 });
